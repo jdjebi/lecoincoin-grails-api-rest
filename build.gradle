@@ -11,7 +11,7 @@ buildscript {
 }
 
 version "0.1"
-group "grails_bihar_22_23"
+group "lecoincoin4"
 
 apply plugin:"eclipse"
 apply plugin:"idea"
@@ -59,6 +59,7 @@ dependencies {
     testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
     testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
     compile 'org.grails.plugins:spring-security-core:3.2.3'
+    compile "org.grails.plugins:spring-security-rest:2.0.0.RC1"
 }
 
 bootRun {

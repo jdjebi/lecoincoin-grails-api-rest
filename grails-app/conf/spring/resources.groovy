@@ -1,5 +1,5 @@
-import grails_bihar_22_23.UserPasswordEncoderListener
+import lecoincoin4.UserPasswordEncoderListener
 // Place your Spring DSL code here
 beans = {
-    userPasswordEncoderListener(UserPasswordEncoderListener)
+    userPasswordEncoderListener(UserPasswordEncoderListener, ref('hibernateDatastore'))
 }

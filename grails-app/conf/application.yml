@@ -2,7 +2,7 @@
 grails:
     profile: web
     codegen:
-        defaultPackage: grails_bihar_22_23
+        defaultPackage: lecoincoin4
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
@@ -126,10 +126,3 @@ environments:
                 testOnReturn: false
                 jdbcInterceptors: ConnectionState
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
-
-server:
-    port: 8081
-    
-illustrations:
-    basePath: C:/Users/gregg/IdeaProjects/grails_bihar_22_23/grails-app/assets/images/
-    baseUrl: http://localhost:8080/assets/
