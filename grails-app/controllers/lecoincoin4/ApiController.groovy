@@ -79,6 +79,43 @@ class ApiController {
         }
     }
 
+    def test(){
+
+        switch (request.getMethod()){
+            case "GET":
+                def users = User.list()
+                render users as JSON
+                break;
+            case "POST":
+                render "POST"
+                break;
+            default:
+                render "Methode inconnue"
+                break;
+        }
+
+        return;
+    }
+
+    def test2(){
+
+        switch (request.getMethod()){
+            case "GET":
+                def id = params.id
+                def user = User.get(id)
+                render user as JSON
+                break;
+            case "POST":
+                render "POST"
+                break;
+            default:
+                render "Methode inconnue"
+                break;
+        }
+
+        return;
+    }
+
     def renderThis(Object object, String accept) {
         switch (accept) {
             case "application/xml":

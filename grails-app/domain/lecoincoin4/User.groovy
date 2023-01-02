@@ -16,6 +16,9 @@ class User implements Serializable {
 	String nom
 	String prenoms
 
+	Date dateCreated
+	Date lastUpdated
+
 	boolean enabled = true
 	boolean accountExpired
 	boolean accountLocked

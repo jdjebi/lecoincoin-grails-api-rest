@@ -1,0 +1,53 @@
+/*
+*= require css/notify.min
+*= require css/sweetalert2.min
+*= require css/volt
+*= require_self
+*/
+
+.pagination {
+    border-top: 0;
+    margin: 0.8em 1em 0.3em;
+    padding: 0.3em 0.2em;
+    text-align: center;
+}
+
+.pagination .currentStep {
+    background-color: #000;
+    color: #ffffff;
+    outline: none;
+}
+.pagination a{
+    color: #000;
+    display: inline-block;
+    margin: 0 0;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    border: 1px solid #000;
+}
+
+.pagination .currentStep {
+    color: #fff;
+    display: inline-block;
+    margin: 0 0;
+    padding: 0.25em 0.7em;
+    text-decoration: none;
+    border: 1px solid #000;
+}
+
+.pagination .nextLink{
+    border-radius: 0 8px 8px 0px;
+}
+
+.pagination .prevLink{
+    border-radius: 8px 0 0 8px;
+}
+
+.pagination .step {
+    border-radius: 0;
+}
+
+.pagination .nextLink:hover, .pagination .prevLink:hover, .pagination .step:hover{
+    background-color: #E5E7EB;
+    color: #000;
+}

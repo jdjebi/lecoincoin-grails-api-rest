@@ -81,7 +81,7 @@ class UserController {
             return
         }
 
-        userService.delete(id)
+        // userService.delete(id)
 
         request.withFormat {
             form multipartForm {

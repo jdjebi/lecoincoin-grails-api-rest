@@ -20,4 +20,21 @@ class Role implements Serializable {
 	static mapping = {
 		cache true
 	}
+
+	def getRoleName(){
+		switch (this.authority){
+			case "ROLE_ADMIN":
+				return "Administrateur"
+			break;
+			case "ROLE_MOD":
+				return "Modérateur"
+			break;
+			case "ROLE_CLIENT":
+				return "Client"
+			break;
+			default:
+				return "Utilisateur"
+			break;
+		}
+	}
 }

@@ -24,27 +24,21 @@ class BootStrap {
 
         println "[+] Création de l'administrateur"
 
-
-
-        /*
-        client = null;
-        moderateur = null;
-
-        (1..10).each { Integer index ->
-            client = new User(username:"client${index}",password: "password",nom: "nom${index}", prenom:"prenom${index}")
-            client.save(flush: true, failOnError: true)
-            println "[+] Création du client${index}"
-        }
-
         (1..2).each { Integer index ->
             moderateur = new User(username:"moderateur${index}",password: "password",nom: "moderateur${index}_nom", prenom:"moderateur${index}_prenom")
             moderateur.save(flush: true, failOnError: true)
+            UserRole.create(moderateur, roleModo, true)
             println "[+] Création du modérateur${index}"
         }
 
-        println "Création éffectuée!"
+        (1..10).each { Integer index ->
+            client = new User(username:"client${index}",password: "password",nom: "nom${index}", prenoms:"prenoms${index}")
+            client.save(flush: true, failOnError: true)
+            UserRole.create(client, roleClient, true)
+            println "[+] Création du client${index}"
+        }
 
-         */
+        println "Création éffectuée!"
 
     }
 
