@@ -24,66 +24,66 @@
 </div>
 
 <div class="row mt-3">
-    <div class="col-12 col-xl-8">
-    <div class="card card-body border-0 shadow mb-4 py-4">
-        <div class="d-flex justify-content-between">
-            <h2 class="h5 mb-4">Utilisateur #${user.id}</h2>
-            <g:form resource="${this.user}" method="DELETE">
-                <a href="/user2/edit/${user.id}" class="btn btn-sm btn-gray-200 d-inline-flex align-items-center">
-                    Modifier
-                </a>
-                <button class="ms-2 btn btn-sm btn-danger d-inline-flex align-items-center" type="submit" onclick="return confirm('Confirmez vous la suppression ?')">
-                    Supprimer
-                </button>
-            </g:form>
-        </div>
-        <div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="username">Nom utilisateur</label>
-                        <input class="form-control" id="username" type="text" value="${user.username}" disabled>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="role">Rôle</label>
-                        <input class="form-control" id="role" type="text" value="${user.getAuthorities()[0].authority}" disabled>
-                    </div>
-                </div>
+    <div class="col-12">
+        <div class="card card-body border-0 shadow mb-4 py-4">
+            <div class="d-flex justify-content-between">
+                <h2 class="h5 mb-4">Utilisateur #${user.id}</h2>
+                <g:form resource="${this.user}" method="DELETE">
+                    <g:link action="edit" id="${user.id}" class="btn btn-sm btn-gray-200 d-inline-flex align-items-center">
+                        Modifier
+                    </g:link>
+                    <button class="ms-2 btn btn-sm btn-danger d-inline-flex align-items-center" type="submit" onclick="return confirm('Confirmez vous la suppression ?')">
+                        Supprimer
+                    </button>
+                </g:form>
             </div>
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="nom">Nom</label>
-                        <input class="form-control" id="nom" type="text" value="${user.nom}" disabled>
+            <div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="username">Nom utilisateur</label>
+                            <input class="form-control" id="username" type="text" value="${user.username}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="role">Rôle</label>
+                            <input class="form-control" id="role" type="text" value="${user.getAuthorities()[0].authority}" disabled>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <div>
-                        <label for="prenoms">Prénoms</label>
-                        <input class="form-control" id="prenoms" type="text" value="${user.prenoms}" disabled>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="nom">Nom</label>
+                            <input class="form-control" id="nom" type="text" value="${user.nom}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="prenoms">Prénoms</label>
+                            <input class="form-control" id="prenoms" type="text" value="${user.prenoms}" disabled>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <label for="dateCreated">Date ajout</label>
-                        <input class="form-control" id="dateCreated" type="text" value="${user.dateCreated}" disabled>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="dateCreated">Date ajout</label>
+                            <input class="form-control" id="dateCreated" type="text" value="${user.dateCreated}" disabled>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <div class="form-group">
-                        <label for="lastUpdated">Date dernière modification</label>
-                        <input class="form-control" id="lastUpdated" type="text" value="${user.lastUpdated}" disabled>
+                    <div class="col-md-6 mb-3">
+                        <div class="form-group">
+                            <label for="lastUpdated">Date dernière modification</label>
+                            <input class="form-control" id="lastUpdated" type="text" value="${user.lastUpdated}" disabled>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>

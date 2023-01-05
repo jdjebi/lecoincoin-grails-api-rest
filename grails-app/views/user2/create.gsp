@@ -24,21 +24,30 @@
 </div>
 
 <div class="row mt-3">
-    <div class="col-12 col-xl-8">
+    <div class="col-12">
         <div class="card card-body border-0 shadow mb-4 py-4">
             <h2 class="h5 mb-4">Nouvel utilisateur</h2>
-            <g:form resource="${this.user}" method="POST">
+            <div>
+                <g:hasErrors bean="${flash.errors}">
+                    <ul class="text-danger" role="alert">
+                        <g:eachError bean="${flash.errors}" var="error">
+                            <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
+                        </g:eachError>
+                    </ul>
+                </g:hasErrors>
+            </div>
+            <g:form url="/user2/save" resource="${this.user}" method="POST">
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
-                            <label for="username">Nom utilisateur</label>
-                            <input class="form-control" id="username" type="text" value="${user.username}">
+                            <label for="username">Nom utilisateur*</label>
+                            <input class="form-control" id="username" name="username" type="text">
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div>
-                            <label for="role">Rôle</label>
-                            <g:select from="${roleList}" class="form-control" name="role" optionKey="id" optionValue="authority" />                    </div>
+                            <label for="role">Rôle*</label>
+                            <g:select from="${roleList}" class="form-control" required="true" name="role" optionKey="id" optionValue="${{it?.getRoleName()}}"/>
                         </div>
                     </div>
                 </div>
@@ -46,19 +55,33 @@
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="nom">Nom</label>
-                            <input class="form-control" id="nom" type="text" value="${user.nom}">
+                            <input class="form-control" id="nom" name="nom" type="text" value="${user.nom}">
                         </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="prenoms">Prénoms</label>
-                            <input class="form-control" id="prenoms" type="text" value="${user.prenoms}">
+                            <input class="form-control" id="prenoms" name="prenoms" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="password">Mot de passe*</label>
+                            <input class="form-control" id="password" name="password" type="password">
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <div>
+                            <label for="confirm_password">Confirmation du mot de passe*</label>
+                            <input class="form-control" id="confirm_password" name="confirm_password" type="password">
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 mt-2">
-                        <div class="justify-content-end">
+                        <div class="d-flex justify-content-end">
                             <g:submitButton name="create" class="btn btn-info" value="Enregistrer" />
                         </div>
                     </div>

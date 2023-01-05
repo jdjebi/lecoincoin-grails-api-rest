@@ -29,14 +29,14 @@
 </div>
 
 <div class="row mt-3">
-    <div class="col-12 col-xl-8">
+    <div class="col-12">
         <div class="card card-body border-0 shadow mb-4 py-4">
             <h2 class="h5 mb-4">Modifications</h2>
             <g:if test="${flash.message}">
                 <div class="message" role="status">${flash.message}</div>
             </g:if>
             <g:hasErrors bean="${this.user}">
-                <ul class="errors" role="alert">
+                <ul class="errors text-danger" role="alert">
                     <g:eachError bean="${this.user}" var="error">
                         <li <g:if test="${error in org.springframework.validation.FieldError}">data-field-id="${error.field}"</g:if>><g:message error="${error}"/></li>
                     </g:eachError>

@@ -44,7 +44,7 @@
                                                 <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                                                 </svg>
-                                                Sign Out
+                                                Déconnexion
                                             </a>
                                         </div>
                                     </div>
@@ -65,8 +65,8 @@
                                             <span class="mt-1 ms-1 sidebar-text fs-5 fw-bold">Lecoincoin</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item  active ">
-                                        <a href="/user2" class="nav-link">
+                                    <li class="nav-item ${request.forwardURI.contains('user2') ? 'active' : ''}">
+                                        <a href="/user2" class="nav-link ">
                                             <span class="sidebar-icon">
                                                 <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                                     <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
@@ -76,8 +76,8 @@
                                             <span class="sidebar-text">Utilisateurs</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="/annonce" target="_blank" class="nav-link d-flex justify-content-between">
+                                    <li class="nav-item ${request.forwardURI.contains('annonce') ? 'active' : ''}">
+                                        <a href="/annonce" class="nav-link d-flex justify-content-between">
                                             <span>
                                                 <span class="sidebar-icon">
                                                     <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -127,6 +127,24 @@
                         <li class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
+                                    <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
+                                        <span class="mb-0 font-small fw-bold text-gray-900">+ Créer</span>
+                                    </div>
+                                </div>
+                            </a>
+                            <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
+                                <g:link controller="user2" action="create" class="dropdown-item d-flex align-items-center" href="#">
+                                    Utilisateur
+                                </g:link>
+                                <div role="separator" class="dropdown-divider my-1"></div>
+                                <g:link controller="annonce" action="create" class="dropdown-item d-flex align-items-center" href="#">
+                                    Annonce
+                                </g:link>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown ms-lg-3">
+                            <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="media d-flex align-items-center">
                                     <img class="avatar rounded-circle" alt="Image placeholder" src="../../assets/img/team/profile-picture-3.jpg">
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                         <span class="mb-0 font-small fw-bold text-gray-900">Bonnie Green</span>
@@ -154,7 +172,7 @@
             </div>
         </nav>
         <g:if test="${flash.message}">
-            <div class="alert alert-info mt-3" role="alert">
+            <div class="alert alert-info mt-3 alert-dismissible fade show" role="alert">
                 ${flash.message}
                 <button type="button" class="btn-close btn-sm" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>

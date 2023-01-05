@@ -21,20 +21,21 @@ class Role implements Serializable {
 		cache true
 	}
 
-	def getRoleName(){
-		switch (this.authority){
+	String getRoleName(){
+		def name = null;
+		switch (authority){
 			case "ROLE_ADMIN":
-				return "Administrateur"
+				name = "Administrateur"
 			break;
 			case "ROLE_MOD":
-				return "Modérateur"
+				name = "Modérateur"
 			break;
 			case "ROLE_CLIENT":
-				return "Client"
+				name = "Client"
 			break;
 			default:
-				return "Utilisateur"
-			break;
+				name = "Utilisateur"
 		}
+		name
 	}
 }

@@ -4,6 +4,9 @@ class BootStrap {
 
     def init = { servletContext ->
 
+        // Instance de l'application grails
+        // def grailsApplication = Holders.grailsApplication
+
         // Initialisation des variables d'instance des domaines
         def admin = null;
         def moderateur = null;
@@ -13,6 +16,11 @@ class BootStrap {
         def roleAdmin = new Role(authority: 'ROLE_ADMIN').save()
         def roleModo = new Role(authority: 'ROLE_MOD').save()
         def roleClient = new Role(authority: 'ROLE_CLIENT').save()
+
+        // Initialisation des variables pour les definitions des illustrations
+        def grails_svg = "grails.svg"
+        def extern_files_url = "localhost:8080/assets"
+        def extern_filepath = extern_files_url +"/"+grails_svg
 
         // Creation des utilisateurs et roles
 
@@ -36,6 +44,24 @@ class BootStrap {
             client.save(flush: true, failOnError: true)
             UserRole.create(client, roleClient, true)
             println "[+] Création du client${index}"
+
+            (1..5).each {
+                Integer aIndex ->
+                    def annonceInstance = new Annonce(
+                            title: "Titre annonce $aIndex de ${client.nom}",
+                            description: "Description annonce $aIndex de ${client.nom}",
+                            price: 100 * aIndex,
+                            isActive: Boolean.TRUE)
+
+                    (1..5).each {
+                        Integer iIndex ->
+                            annonceInstance.addToIllustrations(new Illustration(filename: grails_svg,extern_filepath: extern_filepath))
+                            println "[+] Ajout d'une illustration à l'annonce ${aIndex} du client ${index}"
+                    }
+
+                    client.addToAnnonces(annonceInstance)
+                    println "[+] Création de l'annonce ${aIndex} du client ${index}"
+            }
         }
 
         println "Création éffectuée!"
