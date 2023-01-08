@@ -47,20 +47,25 @@ class AnnonceController {
     }
 
     def edit(Long id) {
-        respond annonceService.get(id)
+        def authors = User.list()
+        respond annonceService.get(id), model: [authors: authors]
     }
 
     def update(Annonce annonce) {
+
         if (annonce == null) {
             notFound()
             return
         }
 
+        println "--------------"
+        println annonce.illustrations
+
         try {
             annonceService.save(annonce)
         } catch (ValidationException e) {
-            respond annonce.errors, view:'edit'
-            return
+            flash.errors = annonce.errors
+            redirect action:"edit", id:annonce.getId()
         }
 
         request.withFormat {
@@ -70,6 +75,7 @@ class AnnonceController {
             }
             '*'{ respond annonce, [status: OK] }
         }
+
     }
 
     def delete(Long id) {

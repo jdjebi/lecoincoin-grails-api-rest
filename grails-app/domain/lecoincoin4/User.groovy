@@ -30,6 +30,10 @@ class User implements Serializable {
 		(UserRole.findAllByUser(this) as List<UserRole>)*.role as Set<Role>
 	}
 
+	String getFullId(){
+		"${username} - ${nom} ${prenoms}"
+	}
+
 	static constraints = {
 		password blank: false, password: true
 		username blank: false, unique: true

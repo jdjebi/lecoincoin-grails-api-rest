@@ -4,7 +4,7 @@ class Annonce {
 
     String title
     String description
-    Float price
+    Integer price
     Boolean isActive = Boolean.FALSE
     Date dateCreated
     Date lastUpdated
@@ -13,7 +13,7 @@ class Annonce {
     static constraints = {
         title blank: false, maxSize: 50, nullable: false
         description blank: false, nullable: false
-        price min: 0F, nullable: false
+        price min: 0, nullable: false
         isActive nullable: false
     }
 

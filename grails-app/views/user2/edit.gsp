@@ -42,7 +42,7 @@
                     </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form resource="${this.user}" method="PUT">
+            <g:form url="/user2/update" resource="${this.user}" method="PUT">
                 <g:hiddenField name="version" value="${this.user?.version}" />
                 <div class="row">
                     <div class="col-md-6 mb-3">

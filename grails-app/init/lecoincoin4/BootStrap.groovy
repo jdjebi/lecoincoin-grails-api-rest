@@ -33,7 +33,7 @@ class BootStrap {
         println "[+] Création de l'administrateur"
 
         (1..2).each { Integer index ->
-            moderateur = new User(username:"moderateur${index}",password: "password",nom: "moderateur${index}_nom", prenom:"moderateur${index}_prenom")
+            moderateur = new User(username:"moderateur${index}",password: "password",nom: "moderateur${index}_nom", prenoms:"moderateur${index}_prenom")
             moderateur.save(flush: true, failOnError: true)
             UserRole.create(moderateur, roleModo, true)
             println "[+] Création du modérateur${index}"
