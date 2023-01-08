@@ -42,25 +42,25 @@
                     </g:hasErrors>
                 </div>
                 <g:form resource="${annonce}" method="PUT">
-                    <g:hiddenField name="version" value="${this.annonce?.version}" />
+                    <g:hiddenField name="version" value="${annonce.version}" />
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div>
-                                <label for="title">Titre</label>
-                                <input class="form-control" id="title" type="text" value="${annonce.title}" name="title">
+                                <label for="title">Titre*</label>
+                                <input class="form-control" id="title" type="text" value="${annonce.title}" name="title" required>
                             </div>
                         </div>
                         <div class="col-md-6 mb-3">
                             <div>
-                                <label for="price">Prix</label>
-                                <input class="form-control" id="price" type="number" value="${annonce.price}" name="price">
+                                <label for="price">Prix*</label>
+                                <input class="form-control" id="price" type="number" value="${annonce.price}" name="price" required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div>
-                                <label for="author">Auteur (<g:link class="text-info small" controller="user2" action="show" id="${annonce.author.id}">Voir profil</g:link>)</label>
+                                <label for="author">Auteur* (<g:link class="text-info small" controller="user" action="show" id="${annonce.author.id}">Voir profil</g:link>)</label>
                                 <g:select id="author" from="${authors}" class="form-control" required="true" name="author.id" optionKey="id" value="${annonce.author.id}" optionValue="${{it?.getFullId()}}"/>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
                     <div class="row">
                         <div class="col-md-12 mb-3">
                             <div>
-                                <label for="description">Description</label>
-                                <textarea class="form-control" rows="5" id="description" name="description" type="text">${annonce.description}</textarea>
+                                <label for="description">Description*</label>
+                                <textarea class="form-control" rows="5" id="description" name="description" type="text" required>${annonce.description}</textarea>
                             </div>
                         </div>
                     </div>
@@ -78,7 +78,7 @@
                             <div>
                                 <div class="form-check form-switch">
                                     <input type="hidden" name="_isActive">
-                                    <input class="form-check-input" type="checkbox" name="isActive" id="isActive" ${annonce.isActive ? "checked" : ""}>
+                                    <input class="form-check-input" type="checkbox" name="isActive" id="isActive" ${annonce.isActive ? "checked" : ""} required>
                                     <label class="form-check-label" for="isActive">Activé</label>
                                 </div>
                             </div>

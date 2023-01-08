@@ -26,21 +26,21 @@ class BootStrap {
 
         println "Création des utilisateurs de base..."
 
-        admin = new User(username: "admin", password: "admin")
+        admin = new User(username: "admin", password: "admin","photo":"avatar.png")
         admin.save(flush: true, failOnError: true)
         UserRole.create(admin, roleAdmin, true)
 
         println "[+] Création de l'administrateur"
 
         (1..2).each { Integer index ->
-            moderateur = new User(username:"moderateur${index}",password: "password",nom: "moderateur${index}_nom", prenoms:"moderateur${index}_prenom")
+            moderateur = new User(username:"moderateur${index}",password: "password",nom: "moderateur${index}_nom", prenoms:"moderateur${index}_prenom","photo":"avatar.png")
             moderateur.save(flush: true, failOnError: true)
             UserRole.create(moderateur, roleModo, true)
             println "[+] Création du modérateur${index}"
         }
 
-        (1..10).each { Integer index ->
-            client = new User(username:"client${index}",password: "password",nom: "nom${index}", prenoms:"prenoms${index}")
+        (1..20).each { Integer index ->
+            client = new User(username:"client${index}","photo":"users/" + (index%10) +".jpeg", password: "password",nom: "nom${index}", prenoms:"prenoms${index}")
             client.save(flush: true, failOnError: true)
             UserRole.create(client, roleClient, true)
             println "[+] Création du client${index}"
@@ -51,11 +51,12 @@ class BootStrap {
                             title: "Titre annonce $aIndex de ${client.nom}",
                             description: "Description annonce $aIndex de ${client.nom}",
                             price: 100 * aIndex,
-                            isActive: Boolean.TRUE)
+                            isActive: (((client.getId() * aIndex) % 2) ? Boolean.TRUE : Boolean.FALSE))
 
                     (1..5).each {
                         Integer iIndex ->
-                            annonceInstance.addToIllustrations(new Illustration(filename: grails_svg,extern_filepath: extern_filepath))
+                            def filename = (aIndex * iIndex * client.getId() ) % 5  + ".jpg"
+                            annonceInstance.addToIllustrations(new Illustration(filename: "annonces/"+filename,extern_filepath: extern_files_url +"/"+filename))
                             println "[+] Ajout d'une illustration à l'annonce ${aIndex} du client ${index}"
                     }
 

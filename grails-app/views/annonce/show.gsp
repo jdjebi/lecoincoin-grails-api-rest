@@ -55,8 +55,8 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <div>
-                                <label for="price">Auteur (<g:link class="text-info small" controller="user2" action="show" id="${annonce.author.id}">Voir profil</g:link>)</label>
-                                <input class="form-control" id="price" type="text" value="${annonce.author.nom} ${annonce.author.prenoms}" disabled/>
+                                <label for="price">Auteur (<g:link class="text-info small" controller="user" action="show" id="${annonce.author.id}">Voir profil</g:link>)</label>
+                                <input class="form-control" id="price" type="text" value="${annonce.author.getFullId()}" disabled/>
                             </div>
                         </div>
                     </div>

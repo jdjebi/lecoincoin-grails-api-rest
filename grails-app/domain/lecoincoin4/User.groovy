@@ -11,6 +11,7 @@ class User implements Serializable {
 
 	private static final long serialVersionUID = 1
 
+	String photo
 	String username
 	String password
 	String nom
@@ -35,6 +36,7 @@ class User implements Serializable {
 	}
 
 	static constraints = {
+		photo nullable: true, blank: true
 		password blank: false, password: true
 		username blank: false, unique: true
 		nom blank: false, nullable: true

@@ -45,14 +45,29 @@
                     <g:each status="i" in="${userList}" var="user">
                         <tr>
                             <td>${i+1}</td>
-                            <td class="fw-bold">
+                            <td class="fw-bold d-flex align-items-center">
+                                <div class="me-3">
+                                <g:link action="show" id="${user.id}">
+                                    <asset:image src="${user.photo}" class="rounded-circle" width="50"/>
+                                </g:link>
+                                </div>
                                 <g:link action="show" id="${user.id}">${user.username}</g:link>
                             </td>
                             <td>${user.nom}</td>
                             <td>${user.prenoms}</td>
                             <td>
                                 <g:each in="${user.getAuthorities()}" var="role">
-                                    <span class="badge bg-primary">${role.getRoleName()}</span>
+
+                                    <g:if test="${role.authority == "ROLE_ADMIN"}">
+                                        <span class="badge bg-primary">${role.getRoleName()}</span>
+                                    </g:if>
+                                    <g:elseif test="${role.authority == "ROLE_MOD"}">
+                                        <span class="badge bg-indigo">${role.getRoleName()}</span>
+                                    </g:elseif>
+                                    <g:else>
+                                        <span class="badge bg-info">${role.getRoleName()}</span>
+                                    </g:else>
+
                                 </g:each>
                             </td>
                             <td>${user.dateCreated}</td>

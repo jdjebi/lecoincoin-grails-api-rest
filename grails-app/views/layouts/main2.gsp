@@ -65,8 +65,8 @@
                                             <span class="mt-1 ms-1 sidebar-text fs-5 fw-bold">Lecoincoin</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item ${request.forwardURI.contains('user2') ? 'active' : ''}">
-                                        <a href="/user2" class="nav-link ">
+                                    <li class="nav-item ${request.forwardURI.contains('user') ? 'active' : ''}">
+                                        <a href="/user" class="nav-link ">
                                             <span class="sidebar-icon">
                                                 <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                                                     <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
@@ -134,7 +134,7 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                                <g:link controller="user2" action="create" class="dropdown-item d-flex align-items-center" href="#">
+                                <g:link controller="user" action="create" class="dropdown-item d-flex align-items-center" href="#">
                                     <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
                                     </svg>
@@ -158,12 +158,12 @@
                                 <div class="media d-flex align-items-center">
                                     <asset:image class="avatar rounded-circle" alt="Image placeholder" src="avatar.png"/>
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                        <span class="mb-0 font-small fw-bold text-gray-900"> <sec:loggedInUserInfo field="username"/></span>
+                                        <span class="mb-0 font-small fw-bold text-gray-900"> <sec:loggedInUserInfo field="username"/> </span>
                                     </div>
                                 </div>
                             </a>
                             <div class="dropdown-menu dashboard-dropdown dropdown-menu-end mt-2 py-1">
-                                <g:link class="dropdown-item d-flex align-items-center" controller="user2" action="show" id="${sec.loggedInUserInfo(field: 'id')}">
+                                <g:link class="dropdown-item d-flex align-items-center" controller="user" action="show" id="${sec.loggedInUserInfo(field: 'id')}">
                                     <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"></path>
                                     </svg>

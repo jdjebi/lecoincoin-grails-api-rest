@@ -37,7 +37,6 @@
                         <th class="border-0">Description</th>
                         <th class="border-0">Prix</th>
                         <th class="border-0">Activé</th>
-                        <th class="border-0">Date mise à jour</th>
                         <th class="border-0 rounded-end">Actions</th>
                     </tr>
                     </thead>
@@ -46,19 +45,36 @@
                         <tr>
                             <td>${i+1}</td>
                             <td class="fw-bold">
-                                <div>
-                                    <g:link action="show" id="${annonce.id}">${annonce.title}</g:link>
+                                <div class="d-flex align-items-center">
+                                    <div class="me-3" style="width: 50px">
+                                        <g:if test="${annonce.illustrations}">
+                                            <asset:image src="${annonce.illustrations[0].filename}" width="500"></asset:image>
+                                        </g:if>
+                                    </div>
+                                    <div>
+                                        <g:link action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
+                                        <div>
+                                            <small>Last: ${annonce.lastUpdated}</small>
+                                        </div>
+                                        <div>
+                                            <g:link controller="user" action="show" id="${annonce.author.id}" class="text-muted">
+                                                <small>${annonce.author.nom} ${annonce.author.prenoms}</small>
+                                            </g:link>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div>
-                                    <g:link controller="user2" action="show" id="${annonce.author.id}" class="text-muted">
-                                        <small>${annonce.author.nom} ${annonce.author.prenoms}</small>
-                                    </g:link>
-                                </div>
+
                             </td>
                             <td>${annonce.description}</td>
-                            <td>${annonce.price}</td>
-                            <td>${annonce.isActive}</td>
-                            <td>${annonce.lastUpdated}</td>
+                            <td class="fw-extrabold">${annonce.price}</td>
+                            <td>
+                                <g:if test="${annonce.isActive}">
+                                    <span class="badge bg-success">Activé</span>
+                                </g:if>
+                                <g:else>
+                                    <span class="badge bg-danger">Désactivé</span>
+                                </g:else>
+                            </td>
                             <td>
                                 <g:link action="show" id="${annonce.id}" class="btn btn-secondary btn-sm">Consulter</g:link>
                             </td>

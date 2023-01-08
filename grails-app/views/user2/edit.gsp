@@ -42,13 +42,13 @@
                     </g:eachError>
                 </ul>
             </g:hasErrors>
-            <g:form url="/user2/update" resource="${this.user}" method="PUT">
-                <g:hiddenField name="version" value="${this.user?.version}" />
+            <g:form url="/user/update" resource="${user}" method="PUT">
+                <g:hiddenField name="version" value="${user?.version}" />
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <div>
                             <label for="username">Nom utilisateur*</label>
-                            <input class="form-control" id="username" type="text" value="${user.username}" required="required">
+                            <input class="form-control" id="username" type="text" name="username" value="${user.username}" required="required">
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-end">
-                    <button class="btn btn-info" type="submit" value="Update">Enregistrer</button>
+                    <g:submitButton name="update" class="btn btn-info" value="Enregistrer" />
                 </div>
             </g:form>
         </div>

@@ -75,11 +75,26 @@ class User2Controller {
     }
 
     def update(User user) {
+
+        println user
+        println params
+
+        render "OK"
+        return;
+
+
         if (user == null) {
             notFound()
             return
         }
 
+        println user.id
+        println params
+
+        render "OK"
+        return;
+
+        /*
         try {
             userService.save(user)
         } catch (ValidationException e) {
@@ -94,6 +109,7 @@ class User2Controller {
             }
             '*'{ respond user, [status: OK] }
         }
+        */
     }
 
     def delete(Long id) {

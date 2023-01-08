@@ -17,11 +17,12 @@ class AnnonceController {
     }
 
     def show(Long id) {
-        respond annonceService.get(id)
+        respond Annonce.findById(id)
     }
 
     def create() {
-        respond new Annonce(params)
+        def authors = User.list()
+        respond new Annonce(params), model: [authors: authors]
     }
 
     def save(Annonce annonce) {
@@ -33,9 +34,11 @@ class AnnonceController {
         try {
             annonceService.save(annonce)
         } catch (ValidationException e) {
-            respond annonce.errors, view:'create'
+            flash.errors = annonce.errors
+            redirect action:"create"
             return
         }
+
 
         request.withFormat {
             form multipartForm {
@@ -83,8 +86,6 @@ class AnnonceController {
             notFound()
             return
         }
-
-        annonceService.delete(id)
 
         request.withFormat {
             form multipartForm {

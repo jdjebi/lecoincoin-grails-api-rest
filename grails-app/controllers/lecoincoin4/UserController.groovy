@@ -54,6 +54,8 @@ class UserController {
     }
 
     def update(User user) {
+
+
         if (user == null) {
             notFound()
             return
@@ -81,7 +83,8 @@ class UserController {
             return
         }
 
-        // userService.delete(id)
+        UserRole.removeAll(User.findById(id))
+        userService.delete(id)
 
         request.withFormat {
             form multipartForm {

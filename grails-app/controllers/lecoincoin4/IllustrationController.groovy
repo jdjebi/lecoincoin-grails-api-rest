@@ -90,6 +90,7 @@ class IllustrationController {
             return
         }
 
+        illustration.annonce.illustrations.remove(illustration)
         illustrationService.delete(illustration.getId())
 
         request.withFormat {
