@@ -8,6 +8,9 @@ import grails.web.api.ServletAttributes
 @Secured('isFullyAuthenticated()')
 class ApiController {
 
+    AnnonceService annonceService
+    UserService userService
+
     // User Singleton
     // Disponible sur l'url /api/user/id
     // Gestion de GET, PUT, PATCH, DELETE
@@ -23,33 +26,47 @@ class ApiController {
                 break;
 
             case "PUT":
-
-                def userData = request.JSON
-                println userData
-
-                if(!params.id)
-                    return response.status = 400
-
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
                 def userInstance = User.get(params.id)
+                if(!userInstance)
+                    return response.status = 404 // Utilisateur introuvable
+                userInstance.properties=request.JSON
+                if(!userInstance.save(flush: true))
+                    return response.status = 400 // Enregistrement échoué
+                response.status = 200 // Mise à jour réussie
+                return renderThis(userInstance,request.getHeader('Accept'))
+                break;
 
-                userInstance.save()
-                println userInstance
+            case "PATCH":
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
+                def userInstance = User.get(params.id)
+                if(!userInstance)
+                    return response.status = 404 // Utilisateur introuvable
+                userInstance.properties=request.JSON
+                if(!userInstance.save(flush: true))
+                    return response.status = 400 // Enregistrement échoué
+                response.status = 200 // Mise à jour réussie
+                return renderThis(userInstance,request.getHeader('Accept'))
+                break;
 
-                /*
-              if(!userInstance)
-                  return response.status = 404
-              renderThis(userInstance, request.getHeader('Accept'))
-              break;
-
-               */
-                render "test"
-                return;
+            case "DELETE":
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
+                def userInstance = User.get(params.id)
+                if(!userInstance){
+                    return response.status = 404 // Utilisateur introuvable
+                }
+                UserRole.removeAll(User.findById(params.id)) // Suppression des rôles
+                userService.delete(params.id)
+                return response.status = 200 // Suppression réussie
+                break;
 
             default:
                 break;
         }
     }
-
     // User Collection
     // Disponible sur l'url /api/users
     // Gestion de GET, POST
@@ -58,62 +75,102 @@ class ApiController {
 
             case "GET":
                 def userList = User.list()
-                renderThis(userList, request.getHeader('Accept'))
+                return renderThis(userList, request.getHeader('Accept'))
                 break;
 
             case "POST":
                 def userMap =  request.JSON
                 def userInstance = new User(userMap)
-
                 if(User.findByUsername(userInstance.getUsername()))
                     return response.status = 400
+                if(!userInstance.save(flush: true))
+                    return response.status = 400
+                response.status = 201
+                return renderThis(userInstance, request.getHeader('Accept'))
+                break;
+            default:
+                break;
+        }
+    }
 
-                if(userInstance.save(flush: true))
-                    return response.status = 201
+    // Annonce Singleton
+    // Disponible sur l'url /api/user/id
+    // Gestion de GET, PUT, PATCH, DELETE
+    def annonce() {
+        switch(request.getMethod()){
+            case "GET":
+                if(!params.id)
+                    return response.status = 400
+                def aInstance = Annonce.get(params.id)
+                if(!aInstance)
+                    return response.status = 404
+                renderThis(aInstance, request.getHeader('Accept'))
+                break;
 
-                return response.status = 400
+            case "PUT":
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
+                def aInstance = Annonce.get(params.id)
+                if(!aInstance)
+                    return response.status = 404 // Annonce introuvable
+                aInstance.properties=request.JSON
+                if(!aInstance.save(flush: true))
+                    return response.status = 400 // Enregistrement échoué
+                response.status = 200 // Mise à jour réussie
+                return renderThis(aInstance,request.getHeader('Accept'))
+                break;
+
+            case "PATCH":
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
+                def aInstance = Annonce.get(params.id)
+                if(!aInstance)
+                    return response.status = 404 // Annonce introuvable
+                aInstance.properties=request.JSON
+                if(!aInstance.save(flush: true))
+                    return response.status = 400 // Enregistrement échoué
+                response.status = 200 // Mise à jour réussie
+                return renderThis(aInstance,request.getHeader('Accept'))
+                break;
+
+            case "DELETE":
+                if (!params.id)
+                    return response.status = 400 // Requête incorrecte
+                def aInstance = Annonce.get(params.id)
+                if(!aInstance){
+                    return response.status = 404 // Annonce introuvable
+                }
+                annonceService.delete(params.id)
+                return response.status = 200 // Suppression réussie
                 break;
 
             default:
                 break;
         }
     }
-
-    def test(){
-
-        switch (request.getMethod()){
+    // Annonce Collection
+    // Disponible sur l'url /api/users
+    // Gestion de GET, POST
+    def annonces(){
+        switch(request.getMethod()){
             case "GET":
-                def users = User.list()
-                render users as JSON
+                def aList = Annonce.list()
+                return renderThis(aList, request.getHeader('Accept'))
                 break;
+
             case "POST":
-                render "POST"
+                def aMap = request.JSON
+                def aInstance = new Annonce(aMap)
+                if(!aInstance.save(flush: true)){
+                    println aInstance.errors
+                    return response.status = 400 // Enregistrement échoué
+                }
+                response.status = 201 // Annonce crée
+                return renderThis(aInstance, request.getHeader('Accept'))
                 break;
             default:
-                render "Methode inconnue"
                 break;
         }
-
-        return;
-    }
-
-    def test2(){
-
-        switch (request.getMethod()){
-            case "GET":
-                def id = params.id
-                def user = User.get(id)
-                render user as JSON
-                break;
-            case "POST":
-                render "POST"
-                break;
-            default:
-                render "Methode inconnue"
-                break;
-        }
-
-        return;
     }
 
     def renderThis(Object object, String accept) {

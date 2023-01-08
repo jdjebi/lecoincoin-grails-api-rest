@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/user/1",
+							"raw": "http://localhost:8080/api/user/10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -24,7 +24,37 @@
 							"path": [
 								"api",
 								"user",
-								"1"
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE USER",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/19",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"19"
 							]
 						}
 					},
@@ -57,7 +87,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"password\":\"admin\",\r\n    \"nom\":\"Benoit\",\r\n    \"prenoms\":\"Linsay\"\r\n}",
+							"raw": "{\r\n    \"password\":\"admin\",\r\n    \"nom\":\"Benoit\",\r\n    \"prenoms\":\"Linsay\",\r\n    \"username\":\"lili3\",\r\n    \"photo\":\"avatar.png\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -81,13 +111,13 @@
 					"response": []
 				},
 				{
-					"name": "UPDATE [PUT] USER",
+					"name": "UPDATE USER",
 					"request": {
 						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nom\":\"Dje Bi\",\r\n    \"prenoms\":\"Mointi\"\r\n}",
+							"raw": "{\r\n    \"nom\":\"Dje Bi\",\r\n    \"prenoms\":\"Mointi\",\r\n    \"username\":\"user5005\", // Pour verifier le bon fonctionnement changer cette valeur en cas de 400\r\n    \"photo\":\"avatar.png\",\r\n    \"password\":\"123\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -95,7 +125,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8080/api/user/1",
+							"raw": "http://localhost:8080/api/user/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -104,7 +134,203 @@
 							"path": [
 								"api",
 								"user",
-								"1"
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PARTIAL UPDATE USER",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\":\"Dje Lou\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ANNONCE",
+			"item": [
+				{
+					"name": "GET ANNONCE",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/user/10",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE ANNONCE",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/annonce/9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"annonce",
+								"9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET ANNONCES",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CREATE ANNONCE",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Le guide de developpeur\",\r\n    \"price\": 500,\r\n    \"isActive\":true,\r\n    \"description\":\"Pour les débutant en informatique\",\r\n    \"author\":{\r\n        \"id\": 4  // Changer cette valeur en cas de 400 (entre 1 et 100). Il se peut que l'utilisateur est été supprimé ou introuvable.\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/annonces/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"annonces",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UPDATE ANNONCE",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\":\"Le guide de developpeur pro\",\r\n    \"price\": 1500,\r\n    \"isActive\":true,\r\n    \"description\":\"Pour les expert en informatique\",\r\n    \"author\":{\r\n        \"id\": 7 // Changer cette valeur en cas de 400 (entre 1 et 100). Il se peut que l'utilisateur est été supprimé ou introuvable.\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/annonce/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"annonce",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PARTIAL UPDATE ANNONCE",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"price\": 800\r\n    // \"author.id\":5 \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/annonce/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"annonce",
+								"6"
 							]
 						}
 					},
@@ -114,6 +340,19 @@
 		},
 		{
 			"name": "LOGIN",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var jsonData = pm.response.json()\r",
+							"var access_token = jsonData.access_token\r",
+							"pm.globals.set(\"access_token\", access_token)"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -147,7 +386,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "eyJhbGciOiJIUzI1NiJ9.eyJwcmluY2lwYWwiOiJINHNJQUFBQUFBQUFBSlZTdlVcL2JRQlJcL1RoTlJnVlNnRWtnZFlBRTI1RWgwek1SbjFjb05xR2tXa0VBWCsrRWVuT1wvTTNSbVNwY3BFaHd5cGFKRXFkZTNJZjlJdVwvUU5RTzNSbDd0cDNodURBZ25xVFwvZTduMzlmenhSVlVqSWJuc1daY0dEOFZXY3lsYjFMTlpXd3d6RFMzSFQ4enFDTzBPZUpGRG16U0JLNlBWd0l2Z0JLUExEd05EdGd4cXdvbTQrcG02d0JEVzJ0cldGSTZ2bUhjMXl6QkU2VVBcL1Z2dVVHbThJMUJRZTk5S01MSU5reXdNVlNadFhjbjFkc28xUnRzd1Vjd0NGUjY2MFZSSU55Z3RaOElNUTBkUXNwYkFLSUF4bHRsM2lsUTVHZ3ZqMTJZenkwVzFnYllXd09PVUdVUHU3aVZwV0dmZDNUdWJraEljd1hzb3QxT1BEblczNEtDKzRcL0ZYbFJDVW1pdHA1cHN5VVJIZjUwNmMrTHN6WnpcLzdYN3ZORWdCMXN2andOOFg4MlFwMHYrXC8rbmMyTDlrSUwwMFBXQzFpdG5aS2J5WUw1clVhbmZQbGw2OVA1MVllZFI2VHNFQnZcL3Y0XC81NVp2bU9xc3FTWmxtVmczdGlHaFB5dTZaeUZjZUpoOXNvZU0zZUpJS3BEOUtXb3h1SlFwaWlsdldTZ3o2dGpENlpqTlkzMXRlZVwvMnk3bDRyTEVxNEpOVW5lV2kzTFQ5UXRLdmVuNDhcLytuT1wvaU9FVlZJNlp5SkE2bnloQTlTeHBvVDY5T0o4WitcL3k3bHljWVwvTTNcL0FNaDBvOTRSQXdBQSIsInN1YiI6ImFkbWluIiwicm9sZXMiOlsiUk9MRV9BRE1JTiJdLCJpc3MiOiJTcHJpbmcgU2VjdXJpdHkgUkVTVCBHcmFpbHMgUGx1Z2luIiwiZXhwIjoxNjcxMzA4NzQzLCJpYXQiOjE2NzEzMDUxNDN9.7HPpk9p25DEupkP-FjQHQnEYCWRZJT5uWva2Bm32bY8",
+				"value": "{{access_token}}",
 				"type": "string"
 			}
 		]

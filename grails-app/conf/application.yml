@@ -133,4 +133,4 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 
 server:
-    port: 8081 # [Ajout custom] modification du port
+    port: 8080 # [Ajout custom] modification du port

@@ -4,7 +4,7 @@ import grails.plugin.springsecurity.annotation.Secured
 import grails.validation.ValidationException
 import static org.springframework.http.HttpStatus.*
 
-@Secured(['ROLE_ADMIN'])
+@Secured(['ROLE_ADMIN','ROLE_MOD'])
 class UserController {
 
     UserService userService
@@ -49,10 +49,12 @@ class UserController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(Long id) {
         respond userService.get(id)
     }
 
+    @Secured(['ROLE_ADMIN'])
     def update(User user) {
 
 
@@ -77,6 +79,7 @@ class UserController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     def delete(Long id) {
         if (id == null) {
             notFound()

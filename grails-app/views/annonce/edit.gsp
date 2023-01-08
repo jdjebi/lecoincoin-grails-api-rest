@@ -78,7 +78,7 @@
                             <div>
                                 <div class="form-check form-switch">
                                     <input type="hidden" name="_isActive">
-                                    <input class="form-check-input" type="checkbox" name="isActive" id="isActive" ${annonce.isActive ? "checked" : ""} required>
+                                    <input class="form-check-input" type="checkbox" name="isActive" id="isActive" ${annonce.isActive ? "checked" : ""}>
                                     <label class="form-check-label" for="isActive">Activé</label>
                                 </div>
                             </div>

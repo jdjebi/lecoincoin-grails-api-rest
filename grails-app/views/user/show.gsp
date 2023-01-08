@@ -28,15 +28,17 @@
         <div class="card card-body border-0 shadow mb-4 py-4">
             <div class="d-flex justify-content-between">
                 <h2 class="h5 mb-4">Utilisateur #${user.id}</h2>
-                <g:form resource="${user}" method="DELETE">
-                    <g:hiddenField name="version" value="${user.version}" />
-                    <g:link action="edit" id="${user.id}" class="btn btn-sm btn-gray-200 d-inline-flex align-items-center">
-                        Modifier
-                    </g:link>
-                    <button class="ms-2 btn btn-sm btn-danger d-inline-flex align-items-center" type="submit" onclick="return confirm('Confirmez vous la suppression ?')">
-                        Supprimer
-                    </button>
-                </g:form>
+                <sec:ifAllGranted roles='ROLE_ADMIN'>
+                    <g:form resource="${user}" method="DELETE">
+                        <g:hiddenField name="version" value="${user.version}" />
+                        <g:link action="edit" id="${user.id}" class="btn btn-sm btn-gray-200 d-inline-flex align-items-center">
+                            Modifier
+                        </g:link>
+                        <button class="ms-2 btn btn-sm btn-danger d-inline-flex align-items-center" type="submit" onclick="return confirm('Confirmez vous la suppression ?')">
+                            Supprimer
+                        </button>
+                    </g:form>
+                </sec:ifAllGranted>
             </div>
             <div>
                 <div class="row">

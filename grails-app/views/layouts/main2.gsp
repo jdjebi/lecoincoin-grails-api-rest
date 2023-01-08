@@ -5,16 +5,15 @@
         <g:layoutTitle default="Grails"/>
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:link rel="icon" href="lecoincoin.ico" type="image/x-ico" />
     <asset:stylesheet src="application2.css"/>
     <g:layoutHead/>
 </head>
 <body>
 
     <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
-        <a class="navbar-brand me-lg-5" href="../../index.html">
-            <asset:image class="navbar-brand-dark" src="img/brand/light.svg" alt="Volt logo"/>
-            <asset:image class="navbar-brand-light" src="img/brand/dark.svg" alt="Volt logo"/>
+        <a class="navbar-brand me-lg-5" href="/j">
+            <asset:image class="navbar-brand-dark" src="lecoincoin.png"/>
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,16 +35,16 @@
                                 <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
                                     <div class="d-flex align-items-center">
                                         <div class="avatar-lg me-4">
-                                            <asset:image src="../../assets/img/team/profile-picture-3.jpg" class="card-img-top rounded-circle border-white" alt="Bonnie Green"/>
+                                            <asset:image src="avatar.png" class="card-img-top rounded-circle border-white" alt="Bonnie Green"/>
                                         </div>
                                         <div class="d-block">
                                             <h2 class="h5 mb-3">Hi, Jane</h2>
-                                            <a href="../../pages/examples/sign-in.html" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
+                                            <g:link controller="logout" action="index" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                                                 <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
                                                 </svg>
                                                 Déconnexion
-                                            </a>
+                                            </g:link>
                                         </div>
                                     </div>
                                     <div class="collapse-close d-md-none">
@@ -58,24 +57,26 @@
                                 </div>
                                 <ul class="nav flex-column pt-3 pt-md-0">
                                     <li class="nav-item">
-                                        <a href="../../index.html" class="nav-link d-flex align-items-center">
+                                        <a href="/" class="nav-link d-flex align-items-center">
                                             <span class="sidebar-icon">
-                                                <asset:image src="img/brand/light.svg" height="20" width="20" alt="Volt Logo"/>
+                                                <asset:image src="lecoincoin.png" width="30" alt="Volt Logo"/>
                                             </span>
                                             <span class="mt-1 ms-1 sidebar-text fs-5 fw-bold">Lecoincoin</span>
                                         </a>
                                     </li>
-                                    <li class="nav-item ${request.forwardURI.contains('user') ? 'active' : ''}">
-                                        <a href="/user" class="nav-link ">
-                                            <span class="sidebar-icon">
-                                                <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-                                                    <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
-                                                    <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
-                                                </svg>
-                                            </span>
-                                            <span class="sidebar-text">Utilisateurs</span>
-                                        </a>
-                                    </li>
+                                    <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_MOD'>
+                                        <li class="nav-item ${request.forwardURI.contains('user') ? 'active' : ''}">
+                                            <a href="/user" class="nav-link ">
+                                                <span class="sidebar-icon">
+                                                    <svg class="icon icon-xs me-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                                                        <path fill-rule="evenodd" d="M8.25 6.75a3.75 3.75 0 117.5 0 3.75 3.75 0 01-7.5 0zM15.75 9.75a3 3 0 116 0 3 3 0 01-6 0zM2.25 9.75a3 3 0 116 0 3 3 0 01-6 0zM6.31 15.117A6.745 6.745 0 0112 12a6.745 6.745 0 016.709 7.498.75.75 0 01-.372.568A12.696 12.696 0 0112 21.75c-2.305 0-4.47-.612-6.337-1.684a.75.75 0 01-.372-.568 6.787 6.787 0 011.019-4.38z" clip-rule="evenodd" />
+                                                        <path d="M5.082 14.254a8.287 8.287 0 00-1.308 5.135 9.687 9.687 0 01-1.764-.44l-.115-.04a.563.563 0 01-.373-.487l-.01-.121a3.75 3.75 0 013.57-4.047zM20.226 19.389a8.287 8.287 0 00-1.308-5.135 3.75 3.75 0 013.57 4.047l-.01.121a.563.563 0 01-.373.486l-.115.04c-.567.2-1.156.349-1.764.441z" />
+                                                    </svg>
+                                                </span>
+                                                <span class="sidebar-text">Utilisateurs</span>
+                                            </a>
+                                        </li>
+                                    </sec:ifAllGranted>
                                     <li class="nav-item ${request.forwardURI.contains('annonce') ? 'active' : ''}">
                                         <a href="/annonce" class="nav-link d-flex justify-content-between">
                                             <span>
@@ -109,17 +110,19 @@
             <div class="container-fluid px-0">
                 <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                     <div class="d-flex align-items-center">
-                        <!-- Search form -->
-                        <form class="navbar-search form-inline" id="navbar-search-main">
-                            <div class="input-group input-group-merge search-bar">
-                                <span class="input-group-text" id="topbar-addon">
-                                    <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
-                                    </svg>
-                                </span>
-                                <input type="text" class="form-control" id="topbarInputIconLeft" placeholder="Rechercher une annonce" aria-label="Search" aria-describedby="topbar-addon">
-                            </div>
-                        </form>
+                        <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_MOD'>
+                            <g:form url="/recherche" method="GET" class="navbar-search form-inline">
+                                <div class="input-group input-group-merge search-bar">
+                                    <button type="submit" class="input-group-text" id="topbar-addon">
+                                        <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                            <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+                                    <input name="q" type="text" class="form-control" id="topbarInputIconLeft" placeholder="Rechercher une annonce" aria-label="Search" aria-describedby="topbar-addon">
+                                </div>
+                            </g:form>
+                        </sec:ifAllGranted>
+                    <sec:ifAllGranted roles='ROLE_ADMIN'>
                         <div class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
@@ -149,9 +152,8 @@
                                 </g:link>
                             </div>
                         </div>
-                        <!-- / Search form -->
+                    </sec:ifAllGranted>
                     </div>
-                    <!-- Navbar links -->
                     <ul class="navbar-nav align-items-center">
                         <li class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

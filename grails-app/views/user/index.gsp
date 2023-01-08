@@ -19,12 +19,14 @@
         </nav>
         <h2 class="h4">Liste des Utilisateurs</h2>
     </div>
+    <sec:ifAllGranted roles='ROLE_ADMIN'>
     <div class="btn-toolbar mb-2 mb-md-0">
         <g:link class="btn btn-sm btn-secondary d-inline-flex align-items-center" action="create">
             <svg class="icon icon-xs me-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
             Créer
         </g:link>
     </div>
+    </sec:ifAllGranted>
 </div>
 <div class="card border-0 shadow my-4">
     <div class="card-body">
