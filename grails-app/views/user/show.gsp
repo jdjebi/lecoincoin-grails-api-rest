@@ -113,5 +113,68 @@
     </div>
 </div>
 
+<div class="card border-0 shadow my-4">
+    <div class="card-header fw-extrabold">
+        Annonces du l'utilisateur
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-striped table-centered table-nowrap mb-0 rounded">
+                <thead class="thead-light">
+                <tr>
+                    <th class="border-0 rounded-start">#</th>
+                    <th class="border-0">Titre (With Illustration)</th>
+                    <th class="border-0">Description</th>
+                    <th class="border-0">Prix</th>
+                    <th class="border-0">Activé</th>
+                    <th class="border-0 rounded-end">Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <g:each status="i" in="${user.annonces}" var="annonce">
+                    <tr>
+                        <td>${i+1}</td>
+                        <td class="fw-bold">
+                            <div class="d-flex align-items-center">
+                                <div class="me-3" style="width: 50px">
+                                    <g:if test="${annonce.illustrations}">
+                                        <asset:image src="${annonce.illustrations[0].filename}" width="500"></asset:image>
+                                    </g:if>
+                                </div>
+                                <div>
+                                    <g:link action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
+                                    <div>
+                                        <small>Last: ${annonce.lastUpdated}</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </td>
+                        <td>${annonce.description}</td>
+                        <td class="fw-extrabold">${annonce.price}</td>
+                        <td>
+                            <g:if test="${annonce.isActive}">
+                                <span class="badge bg-success">Activé</span>
+                            </g:if>
+                            <g:else>
+                                <span class="badge bg-danger">Désactivé</span>
+                            </g:else>
+                        </td>
+                        <td>
+                            <g:link controller="annonce" action="show" id="${annonce.id}" class="btn btn-secondary btn-sm">Consulter</g:link>
+                        </td>
+                    </tr>
+                </g:each>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="d-flex justify-content-end">
+        <div class="pagination">
+            <g:paginate total="${annonceCount ?: 0}" />
+        </div>
+    </div>
+</div>
+
 </body>
 </html>

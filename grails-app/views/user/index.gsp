@@ -34,9 +34,9 @@
                 <tr>
                     <th class="border-0 rounded-start">#</th>
                     <th class="border-0">Nom utilisateur</th>
-                    <th class="border-0">Nom</th>
-                    <th class="border-0">Prénoms</th>
+                    <th class="border-0">Nom & Prénoms</th>
                     <th class="border-0">Rôle</th>
+                    <th class="border-0">Annonce</th>
                     <th class="border-0">Date d'ajout</th>
                     <th class="border-0 rounded-end">Actions</th>
                 </tr>
@@ -53,8 +53,7 @@
                             </div>
                             <g:link action="show" id="${user.id}">${user.username}</g:link>
                         </td>
-                        <td>${user.nom}</td>
-                        <td>${user.prenoms}</td>
+                        <td>${user.nom} ${user.prenoms}</td>
                         <td>
                             <g:each in="${user.getAuthorities()}" var="role">
 
@@ -69,6 +68,9 @@
                                 </g:else>
 
                             </g:each>
+                        </td>
+                        <td class="fw-extrabold text-center">
+                            ${user.annonces.size()}
                         </td>
                         <td>${user.dateCreated}</td>
                         <td>
