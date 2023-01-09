@@ -62,6 +62,8 @@ Tous les utilisateurs peuvent avoir une photo, un nom et un prénoms en plus de 
 
 ### Authentification
 
+![Capture page de connexion](/docs/login.png)
+
 #### Identifiants
 
 Pour se connecter en tant qu'administrateur il suffit d'utiliser les identifiants suivant :
@@ -102,3 +104,20 @@ Elle permet aux modérateurs de modifier et supprimer les annonces. Seul les adm
 Il permet de rechercher une annonce rapidement à partir de son titre.
 
 ## API
+
+l'API possèdent 3 groupes de endpoints :
+
+- `/api/login` Pour l'authentification (Pour l'usage d'un access token)
+- `/api/annonce(s)` Pour la manipulation des annonces
+- `/api/user(s)` Pour la manipulation des utilisateurs
+
+L'explication de l'usage de l'api est présente dans le pdf de documentation ([Documentation PDF de l'API](/ReadMe.pdf)) et les tests dans la collection postman
+([Collection Postman de l'API](/LECOINCOIN%20CLIENT%20API.postman_collection.json))
+
+## Bilan
+
+L'objectif était de mettre en place un site de gestion d'annonces en grails ayant un backend et une api pour la gestion des annonces, utilisateurs et illustrations. On peut que l'objectif est a été atteint car nous disposons d'une application grails qui remplie la grande des charges imposée. Et en plus des fonctionnalité de bases nous avons enrichis les utilisateurs en leur ajoutant des photos et ajouté un moteur de recherche d'annonce. Cependant nous n'avons pas pu mettre en place un méchanisme de modification des photos et des mots de passe de utilisateurs ainsi qu'une option pour recherche les clients par leur nom. Malgré cela, nous espérons avoir fournir un travail correspondant suffisamment aux exigences établies.
+
+### Crédits
+- Jean-Marc Dje Bi
+- Linsay Benoit
