@@ -2,6 +2,7 @@
 	"info": {
 		"_postman_id": "740c7c72-f6a6-43af-8346-69ad7bb0754b",
 		"name": "LECOINCOIN CLIENT API",
+		"description": "API pour la gestion des utilisateurs et des annonces de l'application grails Lecoincoin. Elle offre des endpoints qui permettent de faire des opérations CRUD sur les utilisateurs et les annonces.\n\nLes utilisateurs se caractérisent par les propriétés suivantes :\n\n> Les propriétés marquée de \\* sont obligatoires à la création.\n\n| **Propriétés** | **Description** | **type** |\n| --- | --- | --- |\n| id | Identifiant | Integer |\n| username\\* | Nom utilisateur | String |\n| nom | Nom | String |\n| prenoms | Prénoms | String |\n| password\\* | Mot de passe | String |\n| photo | Lien de la photo | String |\n| authorities | Liste des rôles | List |\n\nLes annonces se caractérisent par les propriétés suivantes :\n\n| **Propriétés** | **Description** | **type** |\n| --- | --- | --- |\n| id | Identifiant | Integer |\n| title\\* | Titre de l'annonce | String |\n| description\\* | Description | String |\n| Price\\* | Prix | Integer |\n| author\\* | Propriétaire de l'annonce | User |\n| illustrations | Liste des illustrations | List |",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "13312778"
 	},
@@ -26,7 +27,8 @@
 								"user",
 								"5"
 							]
-						}
+						},
+						"description": "Récupère les infos d'un utilisateur en fonction de son id\n\n`GET` /api/user/{id}\n\nType de reponses: JSON de l'utilisateur\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 200 | Utilisateur retourné |\n| 404 | Utilisateur introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -35,17 +37,8 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
-							"raw": "http://localhost:8080/api/user/19",
+							"raw": "http://localhost:8080/api/user/20",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -54,9 +47,10 @@
 							"path": [
 								"api",
 								"user",
-								"19"
+								"20"
 							]
-						}
+						},
+						"description": "Supprimer un utilisateur à partir de son id\n\n`DELETE` /api/user/{id}\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Utilisateur supprimé |\n| 404 | Utilisateur introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -76,7 +70,8 @@
 								"api",
 								"users"
 							]
-						}
+						},
+						"description": "Récupère les infos de tous les utilisateurs.\n\n`GET` /api/users\n\nType de reponses: JSON de l'utilisateur\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 200 | Utilisateur retourné |\n| 404 | Utilisateur introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -106,7 +101,8 @@
 								"users",
 								""
 							]
-						}
+						},
+						"description": "Permet de créer un nouveau utilisateur.\n\n`POST` /api/users\n\nType de reponses: JSON de l'utilisateur\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Utilisateur créé |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -136,7 +132,8 @@
 								"user",
 								"6"
 							]
-						}
+						},
+						"description": "Permet de mettre à jour massivement un utilisateur.\n\n`PUT` /api/user/{id}\n\nType de reponses: JSON de l'utilisateur\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Utilisateur mis à jour |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -166,11 +163,13 @@
 								"user",
 								"6"
 							]
-						}
+						},
+						"description": "Permet de mettre à jour des champs d'un un utilisateur.\n\n`PATCH` /api/user/{id}\n\nType de reponses: JSON de l'utilisateur\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Utilisateur mis à jour |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Contient tous les endpoints pour les gestions des utilisateurs. Exigences l'usage d'un Bearer Token.\n\n- Récupération de tous les éléments\n- Récupération par id\n- Suppression par id\n- Création\n- Mise à jour massive\n- Mise à jour partielle"
 		},
 		{
 			"name": "ANNONCE",
@@ -192,7 +191,8 @@
 								"annonce",
 								"6"
 							]
-						}
+						},
+						"description": "Récupère les infos d'une annonce en fonction de son id\n\n`GET` /api/annonce/{id}\n\nType de reponses: JSON de l'annonce\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 200 | Annonce retourné |\n| 404 | Annonce introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -222,7 +222,8 @@
 								"annonce",
 								"9"
 							]
-						}
+						},
+						"description": "Supprimer une annonce à partir de son id\n\n`DELETE` /api/annonce/{id}\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 200 | Annonce supprimé |\n| 404 | Annonce introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -242,7 +243,8 @@
 								"api",
 								"annonces"
 							]
-						}
+						},
+						"description": "Récupère les infos de toutes les annonces.\n\n`GET` /api/annonces\n\nType de reponses: JSON de l'annonce\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 200 | Annonce retourné |\n| 404 | Annonce introuvabe |\n| 400 | Requête incorrecte |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -272,7 +274,8 @@
 								"annonces",
 								""
 							]
-						}
+						},
+						"description": "Permet de créer une nouvelle annonce.\n\n`POST` /api/annonces\n\nType de reponses: JSON de l'annonce\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Annonce créé |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -302,7 +305,8 @@
 								"annonce",
 								"6"
 							]
-						}
+						},
+						"description": "Permet de mettre à jour massivement une annonce.\n\n`PUT` /api/annonce/{id}\n\nType de reponses: JSON de l'annonce\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Annonce mise à jour |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				},
@@ -332,11 +336,13 @@
 								"annonce",
 								"6"
 							]
-						}
+						},
+						"description": "Permet de mettre à jour des champs d'une annonce.\n\n`PATCH` /api/annonce/{id}\n\nType de reponses: JSON de l'annonce\n\nCode de reponses:\n\n| **Code** | **Commentaire** |\n| --- | --- |\n| 201 | Annonce mise à jour |\n| 400 | Requête incorrecte, Données invalide, Erreur d'enregistrement, Champ obligatoire manquant |\n| 403 ou 401 | Accès non autorisé, Token invalide ou expiré |\n| 500 | Erreur serveur |"
 					},
 					"response": []
 				}
-			]
+			],
+			"description": "Contient tous les endpoints pour les gestions des annonces. Exigences l'usage d'un Bearer Token.\n\n- Récupération de tous les éléments\n- Récupération par id\n- Suppression par id\n- Création\n- Mise à jour massive\n- Mise à jour partielle"
 		},
 		{
 			"name": "LOGIN",
@@ -376,7 +382,8 @@
 						"api",
 						"login"
 					]
-				}
+				},
+				"description": "Permet de récupérer l'access_token pour dialoguer avec l'api."
 			},
 			"response": []
 		}
