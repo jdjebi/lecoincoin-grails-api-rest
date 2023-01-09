@@ -31,7 +31,7 @@ En plus de ces fonctionnalités, nous avons ajouté **un moteur de recherche** p
 
 Les fichiers important à consulter pour la découverte de notre production sont les suivants :
 
-- [Collection Postman de l'API](/LECOINCOIN%20CLIENT%20API.postman_collection.json)
+- [Collection Postman de l'API avec documentation](/LECOINCOIN%20CLIENT%20API.postman_collection.json)
 - [Documentation PDF de l'API](/ReadMe.pdf)
 - [Vidéo de démonstration](/demo.mp4)
 
@@ -111,7 +111,7 @@ l'API possèdent 3 groupes de endpoints :
 - `/api/annonce(s)` Pour la manipulation des annonces
 - `/api/user(s)` Pour la manipulation des utilisateurs
 
-L'explication de l'usage de l'api est présente dans le pdf de documentation ([Documentation PDF de l'API](/ReadMe.pdf)) et les tests dans la collection postman
+L'explication de l'usage de l'api est présente dans la documentation en pdf ([Documentation PDF de l'API](/ReadMe.pdf)) et les tests et une documentation plus détaillée sont présents dans la collection postman
 ([Collection Postman de l'API](/LECOINCOIN%20CLIENT%20API.postman_collection.json))
 
 ## Bilan
