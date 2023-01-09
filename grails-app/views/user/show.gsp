@@ -144,7 +144,7 @@
                                     </g:if>
                                 </div>
                                 <div>
-                                    <g:link action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
+                                    <g:link controller="annonce" action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
                                     <div>
                                         <small>Last: ${annonce.lastUpdated}</small>
                                     </div>

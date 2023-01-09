@@ -32,6 +32,7 @@ class UserController {
         }
 
         try {
+            user.photo = "avatar.png"
             userService.save(user)
             def role = Role.get(params.role)
             UserRole.create(user, role, true)

@@ -15,7 +15,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/user/10",
+							"raw": "http://localhost:8080/api/user/5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -24,7 +24,7 @@
 							"path": [
 								"api",
 								"user",
-								"10"
+								"5"
 							]
 						}
 					},
@@ -181,7 +181,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/user/10",
+							"raw": "http://localhost:8080/api/annonce/6",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -189,8 +189,8 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"user",
-								"10"
+								"annonce",
+								"6"
 							]
 						}
 					},
@@ -232,7 +232,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/api/users",
+							"raw": "http://localhost:8080/api/annonces",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -240,7 +240,7 @@
 							"port": "8080",
 							"path": [
 								"api",
-								"users"
+								"annonces"
 							]
 						}
 					},
@@ -313,7 +313,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"price\": 800\r\n    // \"author.id\":5 \r\n}",
+							"raw": "{\r\n    \"price\": 800,\r\n    \"author\":{\r\n        \"id\": 4 // Changer cette valeur en cas de 400 (entre 1 et 100). Il se peut que l'utilisateur est été supprimé ou introuvable.\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"

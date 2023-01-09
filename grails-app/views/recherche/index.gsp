@@ -47,7 +47,7 @@
                                     </g:if>
                                 </div>
                                 <div>
-                                    <g:link action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
+                                    <g:link controller="annonce" action="show" id="${annonce.id}" class="fw-extrabold">${annonce.title}</g:link>
                                     <div>
                                         <small>Last: ${annonce.lastUpdated}</small>
                                     </div>
@@ -71,7 +71,7 @@
                             </g:else>
                         </td>
                         <td>
-                            <g:link action="show" id="${annonce.id}" class="btn btn-secondary btn-sm">Consulter</g:link>
+                            <g:link controller="annonce" action="show" id="${annonce.id}" class="btn btn-secondary btn-sm">Consulter</g:link>
                         </td>
                     </tr>
                 </g:each>

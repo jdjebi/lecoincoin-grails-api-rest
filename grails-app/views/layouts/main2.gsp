@@ -64,7 +64,7 @@
                                             <span class="mt-1 ms-1 sidebar-text fs-5 fw-bold">Lecoincoin</span>
                                         </a>
                                     </li>
-                                    <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_MOD'>
+                                    <sec:ifNotGranted roles='ROLE_CLIENT'>
                                         <li class="nav-item ${request.forwardURI.contains('user') ? 'active' : ''}">
                                             <a href="/user" class="nav-link ">
                                                 <span class="sidebar-icon">
@@ -76,7 +76,7 @@
                                                 <span class="sidebar-text">Utilisateurs</span>
                                             </a>
                                         </li>
-                                    </sec:ifAllGranted>
+                                    </sec:ifNotGranted>
                                     <li class="nav-item ${request.forwardURI.contains('annonce') ? 'active' : ''}">
                                         <a href="/annonce" class="nav-link d-flex justify-content-between">
                                             <span>
@@ -110,8 +110,9 @@
             <div class="container-fluid px-0">
                 <div class="d-flex justify-content-between w-100" id="navbarSupportedContent">
                     <div class="d-flex align-items-center">
-                        <sec:ifAllGranted roles='ROLE_ADMIN,ROLE_MOD'>
-                            <g:form url="/recherche" method="GET" class="navbar-search form-inline">
+
+                        <sec:ifNotGranted roles="ROLE_CLIENT">
+                            <form action="/recherche" method="GET" class="navbar-search form-inline">
                                 <div class="input-group input-group-merge search-bar">
                                     <button type="submit" class="input-group-text" id="topbar-addon">
                                         <svg class="icon icon-xs" x-description="Heroicon name: solid/search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -120,8 +121,9 @@
                                     </button>
                                     <input name="q" type="text" class="form-control" id="topbarInputIconLeft" placeholder="Rechercher une annonce" aria-label="Search" aria-describedby="topbar-addon">
                                 </div>
-                            </g:form>
-                        </sec:ifAllGranted>
+                            </form>
+                        </sec:ifNotGranted>
+
                     <sec:ifAllGranted roles='ROLE_ADMIN'>
                         <div class="nav-item dropdown ms-lg-3">
                             <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

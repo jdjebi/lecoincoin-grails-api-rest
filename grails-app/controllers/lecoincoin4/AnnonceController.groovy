@@ -101,6 +101,8 @@ class AnnonceController {
             return
         }
 
+        annonceService.delete(id)
+
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'annonce.label', default: 'Annonce'), id])

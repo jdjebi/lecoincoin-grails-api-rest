@@ -31,7 +31,6 @@
     </div>
     <div class="card border-0 shadow my-4">
         <div class="card-body">
-            ${annonceList.size()}
             <div class="table-responsive">
                 <table class="table table-striped table-centered table-nowrap mb-0 rounded">
                     <thead class="thead-light">

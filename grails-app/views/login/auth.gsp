@@ -4,7 +4,7 @@
        Connexion - Lecoincoin
     </title>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <asset:link rel="icon" href="favicon.ico" type="image/x-ico" />
+    <asset:link rel="icon" href="lecoincoin.ico" type="image/x-ico" />
     <asset:stylesheet src="application2.css"/>
 </head>
 <body>

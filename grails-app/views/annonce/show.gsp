@@ -43,6 +43,13 @@
                             Modifier
                         </g:link>
                     </sec:ifAllGranted>
+                    <sec:ifAllGranted roles='ROLE_CLIENT'>
+                        <g:form resource="${this.annonce}" method="DELETE">
+                            <button class="ms-2 btn btn-sm btn-danger d-inline-flex align-items-center" type="submit" onclick="return confirm('Confirmez vous la suppression ?')">
+                                Supprimer
+                            </button>
+                        </g:form>
+                    </sec:ifAllGranted>
                 </div>
                 <div>
                     <div class="row">
@@ -108,11 +115,13 @@
             <div class="card card-body border-0 shadow mb-4 py-4">
                <div class="d-flex justify-content-between align-items-center">
                    <h2 class="h5 mb-4">Illustrations</h2>
+                    <sec:ifNotGranted roles="ROLE_CLIENT">
                        <div>
                            <g:link action="edit" id="${annonce.id}#edit-illustration" class="btn btn-sm btn-gray-200 d-inline-flex align-items-center">
                                Mettre à jour
                            </g:link>
                        </div>
+                    </sec:ifNotGranted>
                </div>
                 <div class="row">
                     <g:each status="i" in="${annonce.illustrations}" var="illustration">
