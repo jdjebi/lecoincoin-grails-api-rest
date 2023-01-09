@@ -1,5 +1,7 @@
 # Lecoincoin
 
+[Vidéo de démonstration](/demo.mp4)
+
 ![Logo](docs/lecoincoin.png)
 
 Lecoincoin est une application grails simple et intuitive qui permet de gérer un site d'annonce. Elle permet plus précisement de gérer plusieurs utilisateurs de façon fluide et des annonces et leurs illustrations.
