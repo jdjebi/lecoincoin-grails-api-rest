@@ -1,5 +1,7 @@
 package lecoincoin4
 
+import com.fasterxml.jackson.annotation.JsonInclude
+
 class Annonce {
 
     String title

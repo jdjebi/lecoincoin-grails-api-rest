@@ -1,0 +1,9 @@
+import lecoincoin4.User
+
+model {
+    User user
+}
+
+json g.render(user, [excludes:['annonces']]) {
+    annonces g.render(user.annonces,[expand:['illustrations']])
+}

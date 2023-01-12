@@ -2,6 +2,7 @@ package lecoincoin4
 
 import grails.converters.JSON
 import grails.converters.XML
+import grails.plugin.springsecurity.SpringSecurityService
 import grails.plugin.springsecurity.annotation.Secured
 import grails.web.api.ServletAttributes
 
@@ -10,6 +11,15 @@ class ApiController {
 
     AnnonceService annonceService
     UserService userService
+    SpringSecurityService springSecurityService
+
+
+    def session(){
+        if(request.getMethod() == "GET"){
+            def auth = springSecurityService.principal.properties
+            renderThis(auth,request.getHeader('Accept'))
+        }
+    }
 
     // User Singleton
     // Disponible sur l'url /api/user/id
@@ -22,7 +32,7 @@ class ApiController {
                 def userInstance = User.get(params.id)
                 if(!userInstance)
                    return response.status = 404
-                renderThis(userInstance, request.getHeader('Accept'))
+                respond userInstance
                 break;
 
             case "PUT":
@@ -104,7 +114,7 @@ class ApiController {
                 def aInstance = Annonce.get(params.id)
                 if(!aInstance)
                     return response.status = 404
-                renderThis(aInstance, request.getHeader('Accept'))
+                renderThis(aInstance,request.getHeader("Accept"))
                 break;
 
             case "PUT":
@@ -155,7 +165,7 @@ class ApiController {
         switch(request.getMethod()){
             case "GET":
                 def aList = Annonce.list()
-                return renderThis(aList, request.getHeader('Accept'))
+                respond annonces: aList
                 break;
 
             case "POST":

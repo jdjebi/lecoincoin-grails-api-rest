@@ -19,8 +19,7 @@ class BootStrap {
 
         // Initialisation des variables pour les definitions des illustrations
         def grails_svg = "grails.svg"
-        def extern_files_url = "localhost:8080/assets"
-        def extern_filepath = extern_files_url +"/"+grails_svg
+        def extern_files_url = "localhost:8080/assets/annonces"
 
         // Creation des utilisateurs et roles
 
