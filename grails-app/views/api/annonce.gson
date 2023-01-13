@@ -1,0 +1,7 @@
+import lecoincoin4.Annonce
+
+model {
+    Annonce annonce
+}
+
+json g.render(annonce, [expand:['author','illustrations']])

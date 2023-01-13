@@ -114,7 +114,7 @@ class ApiController {
                 def aInstance = Annonce.get(params.id)
                 if(!aInstance)
                     return response.status = 404
-                renderThis(aInstance,request.getHeader("Accept"))
+                respond annonce: aInstance
                 break;
 
             case "PUT":
@@ -172,7 +172,6 @@ class ApiController {
                 def aMap = request.JSON
                 def aInstance = new Annonce(aMap)
                 if(!aInstance.save(flush: true)){
-                    println aInstance.errors
                     return response.status = 400 // Enregistrement échoué
                 }
                 response.status = 201 // Annonce crée
